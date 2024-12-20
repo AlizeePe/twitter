@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:twitter/content-body.dart';
-import 'package:twitter/footer.dart';
-import 'package:twitter/header.dart';
+import 'package:twitter/tweet/tweet-page.dart';
+import 'auth/auth-page.dart';
 
 void main() {
   runApp(const TwitterApp());
@@ -17,21 +16,11 @@ class TwitterApp extends StatelessWidget {
         theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.pinkAccent)
         ),
-        home: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.blueAccent.shade400,
-            title: Center(
-                child: Text('Twitter',
-                    style: TextStyle(fontSize: 24, color: Colors.white))),
-          ),
-          body: Column(
-            children: [
-              Header(),
-              Expanded(child: ContentBody()),
-              Footer(),
-            ],
-          ),
-        )
+        routes:{
+          "/": (context) => LoginPage(),
+          "/tweet": (context) => TweetPage(),
+        },
+        initialRoute: "/",
     );
   }
 }
